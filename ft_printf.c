@@ -6,7 +6,7 @@
 /*   By: alvalope <alvalope@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 17:15:00 by alvalope          #+#    #+#             */
-/*   Updated: 2023/05/01 10:54:15 by alvalope         ###   ########.fr       */
+/*   Updated: 2023/05/01 15:09:45 by alvalope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,28 @@
 
 void	ft_printf4(char const *str, int *i, va_list arg_l, int *total)
 {
+	int				nbr;
+	unsigned int	neg_nbr;
+
 	if (str[*i + 1] == 'p')
-	{
 		ft_put_va_ptr(va_arg(arg_l, unsigned long long), total);
-	}
 	else if (str[*i + 1] == 'u')
 	{
-		ft_put_va_nbr(va_arg(arg_l, unsigned int), total);
-	}
-	else if (str[*i + 1] == 'x')
-	{
-		ft_put_hexa(va_arg(arg_l, long), total);
-	}
-	else if (str[*i + 1] == 'X')
-	{
-		ft_put_hexa2(va_arg(arg_l, long), total);
+		nbr = va_arg(arg_l, unsigned int);
+		if (nbr < 0)
+		{
+			neg_nbr = nbr;
+			ft_put_va_unbr(nbr, total);
+		}
+		else
+			ft_put_va_nbr(nbr, total);
 	}
 	else if (str[*i + 1] == 'd' || str[*i + 1] == 'i')
-	{
 		ft_put_va_nbr(va_arg(arg_l, int), total);
-	}
+	else if (str[*i + 1] == 'x')
+		ft_put_hexa(va_arg(arg_l, long), total);
+	else if (str[*i + 1] == 'X')
+		ft_put_hexa2(va_arg(arg_l, long), total);
 }
 
 void	ft_printf3(char const *str, int *i, va_list arg_l, int *total)
@@ -95,3 +97,17 @@ int	ft_printf(char const *str, ...)
 	va_end(arg_l);
 	return (t);
 }
+
+/*void	ft_leaks(void)
+{
+	system("leaks -q a.out");
+}
+
+int	main(void)
+{
+	printf(" --%d--", ft_printf("%c %s %s %d", '0', "with %s hehe", "-", 4));
+	printf("++%u++", -4);
+	atexit(ft_leaks);
+	return (0);
+}
+*/

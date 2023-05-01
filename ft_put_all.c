@@ -6,7 +6,7 @@
 /*   By: alvalope <alvalope@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:03:57 by alvalope          #+#    #+#             */
-/*   Updated: 2023/05/01 10:54:24 by alvalope         ###   ########.fr       */
+/*   Updated: 2023/05/01 15:23:59 by alvalope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,21 @@
 
 void	ft_put_va_nbr(int nbr, int *total)
 {
+	char	*nb;
+	int		digits;
+	int		i;
+
+	digits = ft_free_count_digits(nbr);
+	if (nbr == -2147483648)
+		i = 3;
+	else if (nbr < 0)
+		i = 2;
+	else
+		i = 1;
+	nb = malloc(digits + i);
 	ft_putnbr_fd(nbr, 1);
-	*total += ft_strlen(ft_itoa(nbr));
+	*total += ft_strlen(ft_free_itoa(nbr, nb, digits));
+	free(nb);
 }
 
 void	ft_put_va_str(char *arg, int *total)

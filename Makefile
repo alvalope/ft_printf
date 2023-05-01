@@ -6,7 +6,7 @@
 #    By: alvalope <alvalope@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/26 17:19:19 by alvalope          #+#    #+#              #
-#    Updated: 2023/05/01 10:39:19 by alvalope         ###   ########.fr        #
+#    Updated: 2023/05/01 15:26:00 by alvalope         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 LIB = ar rcs
 
-SRCS = ft_printf.c ft_put_all.c
+SRCS = ft_printf.c ft_put_all.c ft_put_unsigned.c ft_free_itoa.c
 
 OBJS = $(SRCS:.c=.o)
 

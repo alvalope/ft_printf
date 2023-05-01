@@ -6,7 +6,7 @@
 /*   By: alvalope <alvalope@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:14:35 by alvalope          #+#    #+#             */
-/*   Updated: 2023/04/28 20:13:49 by alvalope         ###   ########.fr       */
+/*   Updated: 2023/05/01 11:32:55 by alvalope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_putstr_fd(char *s, int fd)
 	i = 0;
 	while (s[i])
 	{
-		ft_putchar_fd(fd, s[i]);
+		ft_putchar_fd(s[i], fd);
 		i++;
 	}
 }

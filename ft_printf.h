@@ -6,7 +6,7 @@
 /*   By: alvalope <alvalope@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 17:21:43 by alvalope          #+#    #+#             */
-/*   Updated: 2023/04/29 19:56:31 by alvalope         ###   ########.fr       */
+/*   Updated: 2023/05/01 15:25:48 by alvalope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ void	ft_put_va_str(char *arg, int *total);
 void	ft_put_hexa(long arg, int *total);
 void	ft_put_hexa2(long arg, int *total);
 void	ft_put_va_ptr(unsigned long long arg, int *total);
+void	ft_putuchar_fd(unsigned int c, int fd);
+void	ft_putunbr_fd(unsigned int n, int fd);
+void	ft_put_va_unbr(unsigned int nbr, int *total);
+int		ft_free_count_digits(int n);
+char	*ft_free_int_to_char(int n, int i, char *nb, int digits);
+char	*ft_free_itoa(int n, char *nb, int digits);
 void	ft_printf4(char const *str, int *i, va_list arg_l, int *total);
 void	ft_printf3(char const *str, int *i, va_list arg_l, int *total);
 void	ft_printf2(char const *str, int *i, va_list arg_l, int *total);
