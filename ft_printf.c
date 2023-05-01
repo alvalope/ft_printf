@@ -6,7 +6,7 @@
 /*   By: alvalope <alvalope@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 17:15:00 by alvalope          #+#    #+#             */
-/*   Updated: 2023/05/01 19:04:58 by alvalope         ###   ########.fr       */
+/*   Updated: 2023/05/01 20:27:42 by alvalope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ft_printf4(char const *str, int *i, va_list arg_l, int *total)
 {
 	int				nbr;
-	unsigned int	neg_nbr;
 
 	if (str[*i + 1] == 'p')
 		ft_put_va_ptr(va_arg(arg_l, unsigned long long), total);
@@ -23,19 +22,16 @@ void	ft_printf4(char const *str, int *i, va_list arg_l, int *total)
 	{
 		nbr = va_arg(arg_l, unsigned int);
 		if (nbr < 0)
-		{
-			neg_nbr = nbr;
-			ft_put_va_unbr(neg_nbr, total);
-		}
+			ft_put_va_unbr((unsigned int)nbr, total);
 		else
 			ft_put_va_nbr(nbr, total);
 	}
 	else if (str[*i + 1] == 'd' || str[*i + 1] == 'i')
 		ft_put_va_nbr(va_arg(arg_l, int), total);
 	else if (str[*i + 1] == 'x')
-		ft_put_hexa(va_arg(arg_l, unsigned long long), total);
+		ft_put_hexa(va_arg(arg_l, unsigned int), total);
 	else if (str[*i + 1] == 'X')
-		ft_put_hexa2(va_arg(arg_l, unsigned long long), total);
+		ft_put_hexa2(va_arg(arg_l, unsigned int), total);
 }
 
 void	ft_printf3(char const *str, int *i, va_list arg_l, int *total)
@@ -88,6 +84,8 @@ int	ft_printf(char const *str, ...)
 	int		t;
 	int		*total;
 
+	if (write(0, "", 0) == -1)
+		return (-1);
 	cont = -1;
 	i = &cont;
 	t = 0;
@@ -107,7 +105,7 @@ int	main(void)
 {
 	int	a;
 
-	a = ft_printf("ia9uP{\v%p^2$u1Atj%dc%c4xt'%d8J%ui&8GYog%xeV\nUoC{ju", (void *)-3921165050516907338, -612305975, -1755741307, -1857882715, 1785201480, 1651741132);
+	a = ft_printf("%s", "asd");
 	printf("--%d--", a);
 	atexit(ft_leaks);
 	return (0);
