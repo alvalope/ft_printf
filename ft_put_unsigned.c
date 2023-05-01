@@ -6,11 +6,24 @@
 /*   By: alvalope <alvalope@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 12:34:14 by alvalope          #+#    #+#             */
-/*   Updated: 2023/05/01 12:54:48 by alvalope         ###   ########.fr       */
+/*   Updated: 2023/05/01 19:08:29 by alvalope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_count_udigits(unsigned int n)
+{
+	int	i;
+
+	i = 1;
+	while (n >= 10)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
+}
 
 void	ft_putuchar_fd(unsigned int c, int fd)
 {
@@ -31,6 +44,9 @@ void	ft_putunbr_fd(unsigned int n, int fd)
 
 void	ft_put_va_unbr(unsigned int nbr, int *total)
 {
+	int	digits;
+
+	digits = ft_count_udigits(nbr);
 	ft_putunbr_fd(nbr, 1);
-	*total += ft_strlen(ft_itoa(nbr));
+	*total += digits;
 }

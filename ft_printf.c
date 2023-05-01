@@ -6,7 +6,7 @@
 /*   By: alvalope <alvalope@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 17:15:00 by alvalope          #+#    #+#             */
-/*   Updated: 2023/05/01 15:09:45 by alvalope         ###   ########.fr       */
+/*   Updated: 2023/05/01 19:04:58 by alvalope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_printf4(char const *str, int *i, va_list arg_l, int *total)
 		if (nbr < 0)
 		{
 			neg_nbr = nbr;
-			ft_put_va_unbr(nbr, total);
+			ft_put_va_unbr(neg_nbr, total);
 		}
 		else
 			ft_put_va_nbr(nbr, total);
@@ -33,9 +33,9 @@ void	ft_printf4(char const *str, int *i, va_list arg_l, int *total)
 	else if (str[*i + 1] == 'd' || str[*i + 1] == 'i')
 		ft_put_va_nbr(va_arg(arg_l, int), total);
 	else if (str[*i + 1] == 'x')
-		ft_put_hexa(va_arg(arg_l, long), total);
+		ft_put_hexa(va_arg(arg_l, unsigned long long), total);
 	else if (str[*i + 1] == 'X')
-		ft_put_hexa2(va_arg(arg_l, long), total);
+		ft_put_hexa2(va_arg(arg_l, unsigned long long), total);
 }
 
 void	ft_printf3(char const *str, int *i, va_list arg_l, int *total)
@@ -72,7 +72,7 @@ void	ft_printf2(char const *str, int *i, va_list arg_l, int *total)
 		{
 			ft_printf3(str, i, arg_l, total);
 		}
-		else
+		else if (str[*i] != 0)
 		{
 			ft_putchar_fd(str[*i], 1);
 			*total += 1;
@@ -105,8 +105,10 @@ int	ft_printf(char const *str, ...)
 
 int	main(void)
 {
-	printf(" --%d--", ft_printf("%c %s %s %d", '0', "with %s hehe", "-", 4));
-	printf("++%u++", -4);
+	int	a;
+
+	a = ft_printf("ia9uP{\v%p^2$u1Atj%dc%c4xt'%d8J%ui&8GYog%xeV\nUoC{ju", (void *)-3921165050516907338, -612305975, -1755741307, -1857882715, 1785201480, 1651741132);
+	printf("--%d--", a);
 	atexit(ft_leaks);
 	return (0);
 }

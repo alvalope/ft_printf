@@ -6,7 +6,7 @@
 /*   By: alvalope <alvalope@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:03:57 by alvalope          #+#    #+#             */
-/*   Updated: 2023/05/01 15:23:59 by alvalope         ###   ########.fr       */
+/*   Updated: 2023/05/01 18:46:53 by alvalope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,26 @@
 
 void	ft_put_va_nbr(int nbr, int *total)
 {
-	char	*nb;
-	int		digits;
-	int		i;
+	int	digits;
+	int	i;
 
-	digits = ft_free_count_digits(nbr);
 	if (nbr == -2147483648)
+	{
 		i = 3;
+		digits = 9;
+	}
 	else if (nbr < 0)
+	{
 		i = 2;
+		digits = ft_count_digits(-nbr);
+	}
 	else
+	{
 		i = 1;
-	nb = malloc(digits + i);
+		digits = ft_count_digits(nbr);
+	}
 	ft_putnbr_fd(nbr, 1);
-	*total += ft_strlen(ft_free_itoa(nbr, nb, digits));
-	free(nb);
+	*total += (digits + i - 1);
 }
 
 void	ft_put_va_str(char *arg, int *total)
@@ -37,14 +42,14 @@ void	ft_put_va_str(char *arg, int *total)
 	*total += ft_strlen(arg);
 }
 
-void	ft_put_hexa(long arg, int *total)
+void	ft_put_hexa(unsigned long long arg, int *total)
 {
 	char	*hexa;
 
 	hexa = "0123456789abcdef";
 	if (arg < 0)
 	{
-		ft_put_hexa((unsigned int)arg / 16, total);
+		ft_put_hexa(arg / 16, total);
 	}
 	if (arg > 15)
 		ft_put_hexa(arg / 16, total);
@@ -52,14 +57,14 @@ void	ft_put_hexa(long arg, int *total)
 	*total += 1;
 }
 
-void	ft_put_hexa2(long arg, int *total)
+void	ft_put_hexa2(unsigned long long arg, int *total)
 {
 	char	*hexa2;
 
 	hexa2 = "0123456789ABCDEF";
 	if (arg < 0)
 	{
-		ft_put_hexa2((unsigned int)arg / 16, total);
+		ft_put_hexa2(arg / 16, total);
 	}
 	if (arg > 15)
 		ft_put_hexa2(arg / 16, total);
