@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putall.c                                        :+:      :+:    :+:   */
+/*   ft_put_all.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alvalope <alvalope@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:03:57 by alvalope          #+#    #+#             */
-/*   Updated: 2023/04/29 19:56:29 by alvalope         ###   ########.fr       */
+/*   Updated: 2023/05/01 10:54:24 by alvalope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,16 @@ void	ft_put_hexa(long arg, int *total)
 
 void	ft_put_hexa2(long arg, int *total)
 {
-	char	*hexa;
+	char	*hexa2;
 
-	hexa = "0123456789ABCDEF";
+	hexa2 = "0123456789ABCDEF";
 	if (arg < 0)
 	{
 		ft_put_hexa2((unsigned int)arg / 16, total);
 	}
 	if (arg > 15)
 		ft_put_hexa2(arg / 16, total);
-	ft_putchar_fd(hexa[arg % 16], 1);
+	ft_putchar_fd(hexa2[arg % 16], 1);
 	*total += 1;
 }
 

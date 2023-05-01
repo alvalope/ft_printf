@@ -6,7 +6,7 @@
 /*   By: alvalope <alvalope@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 17:15:00 by alvalope          #+#    #+#             */
-/*   Updated: 2023/04/29 19:55:57 by alvalope         ###   ########.fr       */
+/*   Updated: 2023/05/01 10:54:15 by alvalope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_printf4(char const *str, int *i, va_list arg_l, int *total)
 	}
 	else if (str[*i + 1] == 'd' || str[*i + 1] == 'i')
 	{
-		ft_put_va_nbr(va_arg(arg_l, long), total);
+		ft_put_va_nbr(va_arg(arg_l, int), total);
 	}
 }
 
