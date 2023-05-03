@@ -6,7 +6,7 @@
 #    By: alvalope <alvalope@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/26 17:19:19 by alvalope          #+#    #+#              #
-#    Updated: 2023/05/01 15:26:00 by alvalope         ###   ########.fr        #
+#    Updated: 2023/05/03 17:30:39 by alvalope         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ $(NAME): $(LIBFT) $(OBJS) $(HEADER)
 	$(LIB) $(NAME) $(OBJS)
 
 $(LIBFT):
-	make -C $(LIBFT_PATH) all
+	make -C $(LIBFT_PATH)
 
 clean:
 	make -C $(LIBFT_PATH) clean
@@ -49,4 +49,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY : clean fclean 
+.PHONY : all clean fclean re

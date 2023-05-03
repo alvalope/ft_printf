@@ -6,46 +6,46 @@
 /*   By: alvalope <alvalope@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 17:15:00 by alvalope          #+#    #+#             */
-/*   Updated: 2023/05/01 20:27:42 by alvalope         ###   ########.fr       */
+/*   Updated: 2023/05/03 17:28:52 by alvalope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_printf4(char const *str, int *i, va_list arg_l, int *total)
+void	ft_printf4(const char *str, int *i, va_list *arg_l, size_t *total)
 {
-	int				nbr;
+	int	nbr;
 
 	if (str[*i + 1] == 'p')
-		ft_put_va_ptr(va_arg(arg_l, unsigned long long), total);
+		ft_put_va_ptr(va_arg(*arg_l, unsigned long long), total);
 	else if (str[*i + 1] == 'u')
 	{
-		nbr = va_arg(arg_l, unsigned int);
+		nbr = va_arg(*arg_l, unsigned int);
 		if (nbr < 0)
 			ft_put_va_unbr((unsigned int)nbr, total);
 		else
 			ft_put_va_nbr(nbr, total);
 	}
 	else if (str[*i + 1] == 'd' || str[*i + 1] == 'i')
-		ft_put_va_nbr(va_arg(arg_l, int), total);
+		ft_put_va_nbr(va_arg(*arg_l, int), total);
 	else if (str[*i + 1] == 'x')
-		ft_put_hexa(va_arg(arg_l, unsigned int), total);
+		ft_put_hexa(va_arg(*arg_l, unsigned int), total);
 	else if (str[*i + 1] == 'X')
-		ft_put_hexa2(va_arg(arg_l, unsigned int), total);
+		ft_put_hexa2(va_arg(*arg_l, unsigned int), total);
 }
 
-void	ft_printf3(char const *str, int *i, va_list arg_l, int *total)
+void	ft_printf3(const char *str, int *i, va_list *arg_l, size_t *total)
 {
 	char	*arg;
 
 	if (str[*i + 1] == 'c')
 	{
-		ft_putchar_fd(va_arg(arg_l, int), 1);
+		ft_putchar_fd(va_arg(*arg_l, int), 1);
 		*total += 1;
 	}
 	else if (str[*i + 1] == 's')
 	{
-		arg = va_arg(arg_l, char *);
+		arg = va_arg(*arg_l, char *);
 		if (!arg)
 			arg = "(null)";
 		ft_put_va_str(arg, total);
@@ -60,7 +60,7 @@ void	ft_printf3(char const *str, int *i, va_list arg_l, int *total)
 	*i += 1;
 }
 
-void	ft_printf2(char const *str, int *i, va_list arg_l, int *total)
+void	ft_printf2(const char *str, int *i, va_list *arg_l, size_t *total)
 {
 	while (str[++*i])
 	{
@@ -76,38 +76,16 @@ void	ft_printf2(char const *str, int *i, va_list arg_l, int *total)
 	}
 }
 
-int	ft_printf(char const *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list	arg_l;
-	int		cont;
-	int		*i;
-	int		t;
-	int		*total;
+	int		i;
+	size_t	total;
 
-	if (write(0, "", 0) == -1)
-		return (-1);
-	cont = -1;
-	i = &cont;
-	t = 0;
-	total = &t;
+	i = -1;
+	total = 0;
 	va_start(arg_l, str);
-	ft_printf2(str, i, arg_l, total);
+	ft_printf2(str, &i, &arg_l, &total);
 	va_end(arg_l);
-	return (t);
+	return (total);
 }
-
-/*void	ft_leaks(void)
-{
-	system("leaks -q a.out");
-}
-
-int	main(void)
-{
-	int	a;
-
-	a = ft_printf("%s", "asd");
-	printf("--%d--", a);
-	atexit(ft_leaks);
-	return (0);
-}
-*/

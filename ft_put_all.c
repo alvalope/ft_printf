@@ -6,13 +6,13 @@
 /*   By: alvalope <alvalope@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 18:03:57 by alvalope          #+#    #+#             */
-/*   Updated: 2023/05/01 20:26:51 by alvalope         ###   ########.fr       */
+/*   Updated: 2023/05/03 17:27:55 by alvalope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_put_va_nbr(int nbr, int *total)
+void	ft_put_va_nbr(int nbr, size_t *total)
 {
 	int	digits;
 	int	i;
@@ -25,24 +25,24 @@ void	ft_put_va_nbr(int nbr, int *total)
 	else if (nbr < 0)
 	{
 		i = 2;
-		digits = ft_count_digits(-nbr);
+		digits = ft_count_digits2(-nbr);
 	}
 	else
 	{
 		i = 1;
-		digits = ft_count_digits(nbr);
+		digits = ft_count_digits2(nbr);
 	}
 	ft_putnbr_fd(nbr, 1);
 	*total += (digits + i - 1);
 }
 
-void	ft_put_va_str(char *arg, int *total)
+void	ft_put_va_str(char *arg, size_t *total)
 {
 	ft_putstr_fd(arg, 1);
-	*total += ft_strlen(arg);
+	*total += ft_strlen2(arg);
 }
 
-void	ft_put_hexa(unsigned long long arg, int *total)
+void	ft_put_hexa(unsigned long long arg, size_t *total)
 {
 	char	*hexa;
 
@@ -53,7 +53,7 @@ void	ft_put_hexa(unsigned long long arg, int *total)
 	*total += 1;
 }
 
-void	ft_put_hexa2(unsigned long long arg, int *total)
+void	ft_put_hexa2(unsigned long long arg, size_t *total)
 {
 	char	*hexa2;
 
@@ -64,9 +64,9 @@ void	ft_put_hexa2(unsigned long long arg, int *total)
 	*total += 1;
 }
 
-void	ft_put_va_ptr(unsigned long long arg, int *total)
+void	ft_put_va_ptr(unsigned long long arg, size_t *total)
 {
 	ft_putstr_fd("0x", 1);
 	*total += 2;
-	ft_put_hexa((unsigned long)arg, total);
+	ft_put_hexa(arg, total);
 }
