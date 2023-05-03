@@ -6,7 +6,7 @@
 /*   By: alvalope <alvalope@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 12:29:59 by alvalope          #+#    #+#             */
-/*   Updated: 2023/04/25 13:24:22 by alvalope         ###   ########.fr       */
+/*   Updated: 2023/05/03 09:49:40 by alvalope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@
 	return (p_c);
 }
 */
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
 	int		i;
 	char	*new_s;
 
-	new_s = malloc (ft_strlen((char *)s) + 1);
+	new_s = malloc (ft_strlen(s) + 1);
 	if (!new_s)
 		return (0);
 	i = 0;

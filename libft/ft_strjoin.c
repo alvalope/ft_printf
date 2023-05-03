@@ -6,13 +6,13 @@
 /*   By: alvalope <alvalope@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 11:52:47 by alvalope          #+#    #+#             */
-/*   Updated: 2023/04/20 12:03:07 by alvalope         ###   ########.fr       */
+/*   Updated: 2023/05/03 09:48:57 by alvalope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
 	char	*str;
 	int		i;

@@ -6,13 +6,13 @@
 /*   By: alvalope <alvalope@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 12:03:28 by alvalope          #+#    #+#             */
-/*   Updated: 2023/04/27 19:49:14 by alvalope         ###   ########.fr       */
+/*   Updated: 2023/05/03 09:51:07 by alvalope         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_calc_start(char const *s1, char const *set, int len)
+int	ft_calc_start(const char *s1, const char *set, int len)
 {
 	int	start;
 	int	i;
@@ -41,7 +41,7 @@ int	ft_calc_start(char const *s1, char const *set, int len)
 	return (start);
 }
 
-int	ft_calc_end(char const *s1, char const *set, int len)
+int	ft_calc_end(const char *s1, const char *set, int len)
 {
 	int	end;
 	int	i;
@@ -70,15 +70,15 @@ int	ft_calc_end(char const *s1, char const *set, int len)
 	return (end);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(const char *s1, const char *set)
 {
 	char	*str;
 	int		start;
 	int		end;
 	int		i;
 
-	start = ft_calc_start(s1, set, ft_strlen((char *)set));
-	end = ft_calc_end(s1, set, ft_strlen((char *)set));
+	start = ft_calc_start(s1, set, ft_strlen(set));
+	end = ft_calc_end(s1, set, ft_strlen(set));
 	str = malloc(end - start + 1);
 	if (!str)
 		return (0);
